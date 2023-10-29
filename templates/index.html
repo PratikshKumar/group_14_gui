@@ -4,20 +4,28 @@
     <title>Image Upload and Prediction</title>
     <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        body{
+            background-image: url("https://img.freepik.com/premium-photo/abstract-background-images-wallpaper-ai-generated_643360-41121.jpg");
+            background-size: cover;
+        }
+    </style>
 </head>
-<body>
-    <nav class="navbar navbar-dark bg-primary">
-        <span class="navbar-brand mb-0 h1">Group 14 IVP</span>
+<body >
+    <nav class="navbar sticky-top navbar-dark bg-dark">
+        <span class="navbar-brand mb-0 h1">Enhancing Visual Question Answering with
+            Beam Search in Transformer Models</span>
     </nav>
     <div class="container mt-5">
-        <h1 class="mb-4">Image Upload and Prediction</h1>
+        <h1 class="mb-4" style="color: brown;" > <u>IMAGE UPLOAD & PREDICTION</u></h1>
         <form method="POST" action="/predict" enctype="multipart/form-data">
             <div class="form-group">
-                <label for="file">Upload an image:</label>
+                <label for="file" style="font-size: large; color: darkblue; font-weight: bold;">Upload an image:</label>
                 <input type="file" class="form-control-file" name="file" id="file" required>
             </div>
             <div class="form-group">
-                <label for="question">Question:</label>
+                <label for="question" style="font-size: large; color: darkblue; font-weight: bold;">Write your Question to the image:</label>
                 <input type="text" class="form-control" name="question" id="question" required>
             </div>
             <button type="submit" class="btn btn-primary">Predict</button>
@@ -43,11 +51,12 @@
             .then(data => {
                 var resultDiv = document.getElementById('result');
                 resultDiv.innerHTML = 'Predicted answers:<br>';
-                resultDiv.innerHTML += 'Original answer: ' + data['original answer'] + '<br>';
-                resultDiv.innerHTML += 'Answer after applying Gaussian: ' + data['answer after applying gaussian'] + '<br>';
-                resultDiv.innerHTML += 'Answer after applying Laplace: ' + data['answer after applying laplace'] + '<br>';
-                resultDiv.innerHTML += 'Answer after applying histogram: ' + data['answer after applying histogram'] + '<br>';
-                resultDiv.innerHTML += 'Answer after applying Prewitt(edge detection): ' + data['answer after applying prewitt(edge detection)'];
+                resultDiv.innerHTML += 'Predicted Answer(priority1): ' + data['original answer'] + '<br>';
+                resultDiv.innerHTML += 'Predicted Answer(priority2): ' + data['answer after applying laplace'] + '<br>';
+                resultDiv.innerHTML += 'Predicted Answer(priority3): ' + data['answer after applying histogram'] + '<br>';
+                resultDiv.innerHTML += 'Predicted Answer(priority4): ' + data['answer after applying prewitt(edge detection)'];
+                resultDiv.innerHTML += 'Predicted Answer(priority5): ' + data['answer after applying gaussian'] + '<br>';
+                
             });
         });
     </script>

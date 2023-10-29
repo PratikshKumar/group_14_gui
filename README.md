@@ -1,1 +1,1 @@
-# group_14_gui
+# VQA PROJECT

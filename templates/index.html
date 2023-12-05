@@ -32,6 +32,9 @@
         </form>
         <div class="mt-4" id="result">
         </div>
+        <div class="mt-4">
+            <img id="preview" src="#" alt="Selected Image" style="max-width: 100%; max-height: 300px;">
+        </div>
     </div>
 
     <!-- Include Bootstrap JS and jQuery -->
@@ -39,6 +42,23 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
+
+function previewImage(input) {
+            var preview = document.getElementById('preview');
+            var file = input.files[0];
+            var reader = new FileReader();
+
+            reader.onloadend = function () {
+                preview.src = reader.result;
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = "";
+            }
+        }
+
         document.querySelector('form').addEventListener('submit', function(e) {
             e.preventDefault();
             var form = e.target;
